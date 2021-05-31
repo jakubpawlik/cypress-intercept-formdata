@@ -1,5 +1,5 @@
 {
-  "name": "cypress-intercept-formdata",
+  "name": "cypress-intercept-formdata-identt",
   "version": "0.3.0",
   "description": "cypress command to work with intreception's multipart/form-data requests",
   "main": "lib/index.js",
@@ -20,7 +20,7 @@
   "types": "./types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yoavniran/cypress-intercept-formdata.git"
+    "url": "git+https://github.com/jakubpawlik/cypress-intercept-formdata.git"
   },
   "keywords": [
     "cypress",
@@ -33,9 +33,9 @@
   "author": "yoav niran",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yoavniran/cypress-intercept-formdata/issues"
+    "url": "https://github.com/jakubpawlik/cypress-intercept-formdata/issues"
   },
-  "homepage": "https://github.com/yoavniran/cypress-intercept-formdata#readme",
+  "homepage": "https://github.com/jakubpawlik/cypress-intercept-formdata#readme",
   "peerDependencies": {
     "cypress": ">=6.3.0"
   },
