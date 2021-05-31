@@ -1,37 +1,15 @@
-const getBodyAsString = (body) => {
-	let str;
-
-	if (typeof body === "string") {
-		str = body;
-	} else {
-		const decoder = new TextDecoder();
-		str = decoder.decode(body);
-	}
-
-	return str;
+const arrayBufferToBase64 = (buffer) => {
+    let binary = '';
+    let bytes = new Uint8Array(buffer);
+    let len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
 };
 
-const getFormDataFromRequest = (body, boundary) => {
-	const decoded = getBodyAsString(body);
-	const parts = decoded.split(boundary);
-
-	return parts.reduce((res, p) => {
-		// eslint-disable-next-line no-useless-escape
-		const fileNameMatch = p.match(/name="([\w\[\]]+)"; filename="([\w.]+)"/m);
-
-		if (fileNameMatch) {
-			res[fileNameMatch[1]] = fileNameMatch[2];
-		} else {
-			const fieldMatch = p.match(/; name="([\w-]+)"/);
-			const fieldName = fieldMatch && fieldMatch[1];
-
-			if (fieldName) {
-				res[fieldName] = p.split(`\r\n`)[3];
-			}
-		}
-
-		return res;
-	}, {});
+const getFormDataFromRequest = (body) => {
+	return arrayBufferToBase64(body)
 };
 
 const interceptFormData = (request) => {
